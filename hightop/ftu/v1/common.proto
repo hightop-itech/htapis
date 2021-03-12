@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package hightop.ftu.v1;
+
+option go_package = "github.com/hightop-itech/go-genproto/htapis/ftu/v1;ftu";
+
+message Empty {}
+
+message Result {
+    bool retCode=1;
+    string msg=2;
+}
+
+enum StatusType {
+    Invalid=0;
+    Online=1;
+    OffLine=2;
+    Warn=3;
+    Alarm=4;
+}

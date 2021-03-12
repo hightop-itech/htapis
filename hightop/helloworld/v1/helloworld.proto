@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package hightop.helloworld.v1;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/hightop-itech/go-genproto/htapis/helloworld/v1;helloworld";
+
+
+
+message SearchRequest {
+    string query = 1;
+    int32 page_number = 2;
+    int32 result_per_page = 3;
+}
+
+message SearchResponse {
+    repeated Result results = 1;
+}
+
+message Result {
+    string url = 1;
+    string title = 2;
+    repeated string snippets = 3;
+}
+
+message ErrorStatus {
+    string message = 1;
+    repeated google.protobuf.Any details = 2;
+}
+
+message TestMessage {
+    google.protobuf.FileDescriptorSet fs = 1;
+}
+

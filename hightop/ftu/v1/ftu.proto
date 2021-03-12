@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+
+package hightop.ftu.v1;
+
+import "hightop/ftu/v1/common.proto";
+option go_package = "github.com/hightop-itech/go-genproto/htapis/ftu/v1;ftu";
+
+
+//DeviceOps device operation commands, used for ddmp communicate with web
+service DeviceOps {
+    //dam: device manage
+    rpc ActivateDevice(ActivateDeviceReq) returns(Result){}
+    rpc GetDeviceStatus(Empty) returns(DeviceStatusResp){}
+
+    //params
+    rpc GetParam(ParamReq) returns(ParamResp){}
+    rpc SetParam(ParamReq) returns(ParamResp){}
+
+    //upgrade
+    rpc Upgrade(UpgradeDeviceReq) returns(Result){}
+
+    //files
+    rpc SyncFiles(FileReq) returns(Result){}
+}
+
+message ActivateDeviceReq {
+    int64 DeviceID=1;
+    enum ActCmd {
+        Stop=0;
+        Start=1;
+    }
+    ActCmd Cmd=2;
+}
+
+message DeviceStatusResp {
+    Result Result=1;
+    map<string,StatusType> Status=2;
+}
+
+message ParamReq {
+    int64 DeviceID=1;
+    int64 SensorID=2;
+    string content=3; //convert map[string]interface{} to json string
+}
+
+message ParamResp {
+    Result result=1;
+    string content=2; //convert map[string]interface{} to json string
+}
+
+message UpgradeDeviceReq {
+    int64 DeviceID=1;
+    string BinPath=2;
+}
+
+message FileReq {
+    int64 DeviceID=1;
+    string FilePath=2;
+}
