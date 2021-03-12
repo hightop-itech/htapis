@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package hightop.ftu.v1;
 
-option go_package = "github.com/hightop-itech/go-genproto/htapis/ftu/v1;ftu";
+option go_package = "github.com/hightop-itech/go-genproto/hightop/ftu/v1;ftu";
 
 message Empty {}
 

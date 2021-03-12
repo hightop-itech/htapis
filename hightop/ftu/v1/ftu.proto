@@ -4,7 +4,7 @@ syntax = "proto3";
 package hightop.ftu.v1;
 
 import "hightop/ftu/v1/common.proto";
-option go_package = "github.com/hightop-itech/go-genproto/htapis/ftu/v1;ftu";
+option go_package = "github.com/hightop-itech/go-genproto/hightop/ftu/v1;ftu";
 
 
 //DeviceOps device operation commands, used for ddmp communicate with web
